@@ -1,33 +1,33 @@
 #include <stdio.h>
 
-void f_alpha(int *p) {
-    int temp = *p;
-    int rev = 0;
-    while (temp > 0) {
-        rev = (rev * 10) + (temp % 10);
-        temp = temp / 10;
+void f_invertir(int *p) {
+    int aux = *p;
+    int invertido = 0;
+    while (aux > 0) {
+        invertido = (invertido * 10) + (aux % 10); // le saca el resto y lo invierte luego del primer while
+        aux = aux / 10; // achica el numero 
     }
-    *p = rev;
+    *p = invertido; // devuelve el valor invertido que haya ingresado en p
 }
 
-void f_beta(int *p) {
-    *p = *p / 2;
+void f_mitad(int *p) {
+    *p = *p / 2;  // toma el valor que viene de la funcion alpha y lo divide en 2
 }
 
-void f_gamma(int *p) {
-    int temp = *p;
-    int suma = 0;
-    while (temp > 0) {
-        suma = suma + (temp % 10);
-        temp = temp / 10;
+void f_sumaDigitos(int *p) {
+    int aux = *p; // guardo el valor de p
+    int suma = 0; 
+    while (aux > 0) {
+        suma = suma + (aux % 10); // sumo en 'suma' el resto/residuo de aux
+        aux = aux / 10; // achico aux
     }
-    *p = *p + suma;
+    *p = *p + suma; // le sumo a p el valor que obtuve en suma, que seria la suma de los digitos de mi numero
 }
 
 void procesar_enigma(int *valor_referencia) {
-    f_alpha(valor_referencia);
-    f_beta(valor_referencia);
-    f_gamma(valor_referencia);
+    f_invertir(valor_referencia);
+    f_mitad(valor_referencia);
+    f_sumaDigitos(valor_referencia);
 }
 
 int main() {
@@ -43,3 +43,5 @@ int main() {
     
     return 0;
 }
+
+// Es una funcion que me permite ingresar o leer un numero para primero invertirlo, luego dividirlo en 2 y al final sumarle la suma de sus digitos para devolver el numero invertido dividido y sumado.
